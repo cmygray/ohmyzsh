@@ -251,6 +251,15 @@ prompt_aws_vault() {
   prompt_segment "#ff9900" "#232f3e" "$vault_segment"
 }
 
+prompt_caffeinate() {
+  CAFFEINATE_JOB=$(jobs -l | grep -e 'caffeinate')
+
+  if [[ $CAFFEINATE_JOB ]]; then
+    prompt_segment "#755330" black ☕️
+  fi
+  
+}
+
 # Prompt newline
 prompt_newline() {
   if [[ -n $CURRENT_BG ]]; then
@@ -270,6 +279,7 @@ build_prompt() {
   prompt_status
   prompt_virtualenv
   prompt_aws
+  prompt_caffeinate
   prompt_aws_vault
   prompt_context
   prompt_dir
